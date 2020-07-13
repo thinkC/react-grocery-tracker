@@ -1,14 +1,11 @@
-//import React from 'react';
-
-import React from 'react';
-//import { GroceryContext } from '../context/GroceryContext';
-//import { useLocation } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { GlobalContext } from '../context/GlobalState';
+import { useLocation, Link } from 'react-router-dom';
 
 const Navbar = () => {
-    // const { groceries } = useContext(GroceryContext);
-    // console.log(groceries)
-    // let location = useLocation();
-    // console.log(location.pathname)
+
+    const { groceries } = useContext(GlobalContext);
+    let location = useLocation();
     return (
         <div className="container">
 
@@ -18,11 +15,10 @@ const Navbar = () => {
                 </div>
                 <div className="col-md-4 col-lg-4">
                     <h1 className="mt-3">Groceries Inventory | Tracker</h1>
-                    {/* <h5><i>Total number of grocery items - {groceries.length}</i></h5> */}
-                    <h5><i>Total number of grocery items - </i></h5>
-                    {/* <button className="btn btn-lg btn-success mt-5">
-                        {location.pathname === '/' ? <a href="/add">Add Grocery</a> : <a href="/">Home</a>}
-                    </button> */}
+                    <h5><i>Total number of grocery items - {groceries.length}</i></h5>
+                    <button className="btn btn-lg btn-success mt-5">
+                        {location.pathname === '/' ? <Link to="/add">Add Grocery</Link> : <Link to="/">Home</Link>}
+                    </button>
 
                 </div>
             </div>

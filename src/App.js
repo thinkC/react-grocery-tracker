@@ -15,7 +15,6 @@ function App() {
         <div className="container">
           <Navbar />
           <Switch>
-
             <Route exact path="/" component={GroceryList} />
             <Route path="/add" component={AddGrocery} />
             <Route path="/edit/:id" component={EditGrocery} />

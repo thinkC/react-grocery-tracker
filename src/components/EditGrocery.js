@@ -25,21 +25,25 @@ const EditGrocery = (props) => {
         setSelectedGrocery(selectedGrocery)
     }, [currentGroceryId, groceries])
 
-    const handleSubmit = () => {
-
-
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        editGrocery(selectedGrocery)
         history.push('/')
 
+    }
+    const handleChange = (e) => {
+        setSelectedGrocery({ ...selectedGrocery, [e.target.name]: e.target.value })
     }
     return (
         <div>
             <form onSubmit={handleSubmit} >
                 <div className="form-group">
                     <label htmlFor="Name" >Name</label>
-                    <input type="text"
+                    <input type="text" name="name"
                         className="form-control"
                         id="" value={selectedGrocery.name}
-                        onChange={(e) => { setSelectedGrocery({ ...selectedGrocery, [e.target.name]: e.target.value }) }}
+                        // onChange={(e) => { setSelectedGrocery({ ...selectedGrocery, [e.target.name]: e.target.value }) }}
+                        onChange={handleChange}
                         required
                     />
 
@@ -49,8 +53,10 @@ const EditGrocery = (props) => {
                     <input type="text"
                         className="form-control"
                         id="" value={selectedGrocery.image}
-                        onChange={(e) => { setSelectedGrocery({ ...selectedGrocery, [e.target.image]: e.target.value }) }}
+                        // onChange={(e) => { setSelectedGrocery({ ...selectedGrocery, [e.target.image]: e.target.value }) }}
+                        onChange={handleChange}
                         required
+                        name="image"
                     />
 
                 </div>
@@ -59,7 +65,9 @@ const EditGrocery = (props) => {
                     <input type="text"
                         className="form-control"
                         id="" value={selectedGrocery.qty}
-                        onChange={(e) => { setSelectedGrocery({ ...selectedGrocery, [e.target.qty]: e.target.value }) }}
+                        // onChange={(e) => { setSelectedGrocery({ ...selectedGrocery, [e.target.qty]: e.target.value }) }}
+                        onChange={handleChange}
+                        name="qty"
                         required
                     />
 
@@ -71,7 +79,9 @@ const EditGrocery = (props) => {
                         <label htmlFor="ExpirationDate">Expiration</label>
                         <DatePicker selected={selectedGrocery.expiration}
                             // onChange={(date) => { setExpiration(date) }}
-                            onChange={(e) => { setSelectedGrocery({ ...selectedGrocery, [e.target.expiration]: e.target.value }) }}
+                            // onChange={(e) => { setSelectedGrocery({ ...selectedGrocery, [e.target.expiration]: e.target.value }) }}
+                            onChange={handleChange}
+                            name="expiration"
                             required
                         />
 
@@ -93,8 +103,10 @@ const EditGrocery = (props) => {
                     <input type="text"
                         className="form-control"
                         id="" value={selectedGrocery.category}
+                        name="category"
                         // onChange={(e) => { setCategory(e.target.value) }}
-                        onChange={(e) => { setSelectedGrocery({ ...selectedGrocery, [e.target.category]: e.target.value }) }}
+                        // onChange={(e) => { setSelectedGrocery({ ...selectedGrocery, [e.target.category]: e.target.value }) }}
+                        onChange={handleChange}
                         required
                     />
 
